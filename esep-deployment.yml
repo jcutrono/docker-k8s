@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: esep
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: esep
+  template:
+    metadata:
+      labels:
+        app: esep
+    spec:
+      containers:
+        - name: esep
+          image: 074309573640.dkr.ecr.us-east-1.amazonaws.com/esep:latest
+          imagePullPolicy: "Always"
+          ports:
+            - containerPort: 80
